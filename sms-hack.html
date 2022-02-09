@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS HACK</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    html {
+        height: 100vh;
+    }
+    .box {
+        height: 95vh;
+        background-color: black;
+        color: aliceblue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer {
+        height: 5vh;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .odosielanie {
+        display: flex;
+        flex-direction: column;
+    
+    }
+    .odosielanie .cislo,.sprava {
+        border: 2.1px solid aliceblue;
+        padding: 35px;
+        text-align: left;
+        margin: 20px 0;
+    }
+    .odosielanie input,textarea {
+        border: 2.1px solid aliceblue;
+        color: aliceblue;
+        background: none;
+        padding: 20px;
+        font-size: 1rem;
+        margin: 0 0 25px 0;
+    }
+    .odosielanie div {
+        text-align: center;
+    }
+    .odosielanie button {
+        border: 2.1px solid aliceblue;
+        background: none;
+        background-color: aliceblue;
+        padding: 20px;
+        width: 50%;
+    }
+    .odosielanie button:active {
+        background-color: #000000;
+        color: aliceblue;
+    }
+    #debug {
+        border: 2.1px solid aliceblue;
+        padding: 21px;
+        margin: 21px;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="odosielanie">
+            <h3 class="cislo">
+                Čísielko príjemcu (s predvolbou)
+            </h3>
+            <input type="text" name="cisloPrijemcu" id="cisloPrijemcu" placeholder="napr +421900000000">
+            <h3 class="sprava">
+                Správička
+            </h3>
+            <textarea name="spravaPrePrijemcu" id="spravaPrePrijemcu" maxlength="150" cols="30" rows="10" placeholder="spravicka, max je 150 znakoch"></textarea>
+            <div>
+                <button onclick="poslatSpravu();">POŠLI</button>
+            </div>
+            
+        </div>
+        <div id="debug">
+            status text
+        </div>
+        
+    </div>
+    <div class="footer">ZAMO-O</div>
+
+    <!--
+
+
+
+                                                                             
+         ,----,                       ,--.                                   
+       .'   .`|  ,---,              ,--.'|    ,---,    ,-.----.       ,---,. 
+    .'   .'   ; '  .' \         ,--,:  : |  .'  .' `\  \    /  \    ,'  .' | 
+  ,---, '    .'/  ;    '.    ,`--.'`|  ' :,---.'     \ ;   :    \ ,---.'   | 
+  |   :     ./:  :       \   |   :  :  | ||   |  .`\  ||   | .\ : |   |   .' 
+  ;   | .'  / :  |   /\   \  :   |   \ | ::   : |  '  |.   : |: | :   :  |-, 
+  `---' /  ;  |  :  ' ;.   : |   : '  '; ||   ' '  ;  :|   |  \ : :   |  ;/| 
+    /  ;  /   |  |  ;/  \   \'   ' ;.    ;'   | ;  .  ||   : .  / |   :   .' 
+   ;  /  /--, '  :  | \  \ ,'|   | | \   ||   | :  |  ';   | |  \ |   |  |-, 
+  /  /  / .`| |  |  '  '--'  '   : |  ; .''   : | /  ; |   | ;\  \'   :  ;/| 
+./__;       : |  :  :        |   | '`--'  |   | '` ,/  :   ' | \.'|   |    \ 
+|   :     .'  |  | ,'        '   : |      ;   :  .'    :   : :-'  |   :   .' 
+;   |  .'     `--''          ;   |.'      |   ,.'      |   |.'    |   | ,'   
+`---'                        '---'        '---'        `---'      `----'     
+                                                                             
+bitch
+
+
+
+
+-->
+
+</body>
+    <script>
+
+        function poslatSpravu() {
+            let cislo = document.getElementById("cisloPrijemcu").value.toString();
+            let sprava = document.getElementById("spravaPrePrijemcu").value.toString();
+
+            /* alll love goes to https://textbelt.com <333 */
+
+           fetch('https://textbelt.com/text', {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    phone: cislo,
+                    message: sprava,
+                    key: 'textbelt',
+                }),
+                }).then(response => {
+                return response.json();
+                }).then(data => {
+                console.log(data); // 
+         
+                document.getElementById("debug").innerHTML = "status: " + data.success;
+                });
+               
+
+        }
+
+    </script>
+</html>
