@@ -1,4 +1,4 @@
-# SMS *'hack'* with web gui
+# SMS *'hack'* with web GUI
 
 
   Simple website which function is to send SMS message to your desired destination. 
